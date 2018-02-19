@@ -3,7 +3,6 @@
 namespace Kitchenu\Chatwork;
 
 use GuzzleHttp\Client as HttpClient;
-use Kitchenu\Chatwork\Endpoint\Me;
 use GuzzleHttp\Exception\ClientException;
 use Kitchenu\Chatwork\Exception\BadRequestExceotion;
 use Kitchenu\Chatwork\Exception\AuthorizedExceotion;
@@ -16,20 +15,27 @@ class Client
      */
     protected $httpClient;
 
-    /** @var string */
+    /**
+     * @var string 
+     */
     protected $token;
 
-    protected $url = 'https://api.chatwork.com/v1/';
+    /**
+     * @var string
+     */
+    protected $url = 'https://api.chatwork.com/v2/';
 
     /**
      * Clients accept an array of constructor parameters.
      *
+     * @param string $token
+     * @param array $options
      */
-    public function __construct($token, array $options = [])
+    public function __construct($token, array $options = [], HttpClient $httpClient = null)
     {
         $this->token = $token;
 
-        $this->httpClient = new HttpClient($this->httpOptionsDefaults($options));
+        $this->httpClient = $httpClient ?: new HttpClient($this->httpOptionsDefaults($options));
     }
 
     /**
@@ -81,6 +87,10 @@ class Client
         return json_decode($json);
     }
 
+    /**
+     * @param string $method
+     * @param array  $params
+     */
     protected function requestOptions($method, array $params)
     {
         $options = [
@@ -98,13 +108,27 @@ class Client
         return $options;
     }
 
+    /**
+     * @return string
+     */
     public function getToken()
     {
         return $this->token;
     }
 
+    /**
+     * @param string $token
+     */
     public function setToken($token)
     {
         $this->token = $token;
+    }
+
+    /**
+     * @return HttpClient
+     */
+    public function getHttpClient()
+    {
+        return $this->httpClient;
     }
 }
