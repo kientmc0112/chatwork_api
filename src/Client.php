@@ -8,6 +8,12 @@ use Kitchenu\Chatwork\Exception\BadRequestExceotion;
 use Kitchenu\Chatwork\Exception\AuthorizedExceotion;
 use Kitchenu\Chatwork\Exception\ChatworkException;
 
+/**
+ * @method mixed get(string $endpoint, array $params = [], bool $assoc = false)
+ * @method mixed put(string $endpoint, array $params = [], bool $assoc = false)
+ * @method mixed post(string $endpoint, array $params = [], bool $assoc = false)
+ * @method mixed delete(string $endpoint, array $params = [], bool $assoc = false)
+ */
 class Client
 {
     /**
@@ -59,12 +65,13 @@ class Client
      * @param  string $method
      * @param  string $endpoint
      * @param  array  $params
+     * @param  bool   $assoc
      * @return mixed
      * @throws BadRequestExceotion
      * @throws AuthorizedExceotion
      * @throws ChatworkException
      */
-    public function request($method, $endpoint, array $params = [])
+    public function request($method, $endpoint, array $params = [], $assoc = false)
     {
         $method = strtoupper($method);
 
@@ -84,7 +91,7 @@ class Client
             throw new ChatworkException($e);
         }
 
-        return json_decode($json);
+        return json_decode($json, $assoc);
     }
 
     /**
@@ -130,5 +137,18 @@ class Client
     public function getHttpClient()
     {
         return $this->httpClient;
+    }
+
+    public function __call($method, $args)
+    {
+        if (count($args) < 1) {
+            throw new \InvalidArgumentException('Magic request methods require a URI and optional options array');
+        }
+
+        $endpoint = $args[0];
+        $params = isset($args[1]) ? $args[1] : [];
+        $assoc = isset($args[2]) ? $args[2] : false;
+
+        return $this->request($method, $endpoint, $params, $assoc);
     }
 }
