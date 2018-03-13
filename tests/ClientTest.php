@@ -33,9 +33,18 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
     public function testSetterGetter()
     {
-        $this->assertSame($this->client->getToken(), 'token');
+        $this->assertSame($this->client->token(), 'token');
         
-        $this->client->setToken('test');
-        $this->assertSame($this->client->getToken(), 'test');
+        $this->client->token('test');
+        $this->assertSame($this->client->token(), 'test');
+    }
+
+    public function FunctionName(Type $var = null)
+    {
+        try {
+            $this->client->getMe();
+        } catch (ChatworkException $e) {
+            $this->assertEquals($e->getCode(), 401);
+        }
     }
 }
