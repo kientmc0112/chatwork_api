@@ -28,9 +28,18 @@ use Kitchenu\Chatwork\Exception\ChatworkException;
  * @method Response getRoomMessage(array $params = [])
  * @method Response putRoomMessage(array $params = [])
  * @method Response deleteRoomMessage(array $params = [])
- * @method Response putRoomMessage(array $params = [])
- * @method Response deleteRoomMessage(array $params = [])
- * @method Response putRoomMessage(array $params = [])
+ * @method Response getRoomTasks(array $params = [])
+ * @method Response postRoomTasks(array $params = [])
+ * @method Response getRoomTask(array $params = [])
+ * @method Response getRoomFiles(array $params = [])
+ * @method Response getRoomFile(array $params = [])
+ * @method Response getRoomLink(array $params = [])
+ * @method Response postRoomLink(array $params = [])
+ * @method Response putRoomLink(array $params = [])
+ * @method Response deleteRoomLink(array $params = [])
+ * @method Response getIncomingRequests(array $params = [])
+ * @method Response putIncomingRequest(array $params = [])
+ * @method Response deleteIncomingRequest(array $params = [])
  **/
 class Client
 {
@@ -211,7 +220,7 @@ class Client
     public function httpClient($httpClient = null)
     {
         if ($httpClient instanceof HttpClient) {
-            $httpClient = $this->httpClient;
+            $this->httpClient = $httpClient;
         }
 
         return $this->httpClient;
