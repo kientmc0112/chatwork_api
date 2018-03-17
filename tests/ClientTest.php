@@ -9,7 +9,6 @@ use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response as HttpResponse;
 use Kitchenu\Chatwork\Response;
-use function GuzzleHttp\json_encode;
 
 class ClientTest extends \PHPUnit_Framework_TestCase
 {
