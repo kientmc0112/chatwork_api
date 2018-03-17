@@ -194,7 +194,7 @@ class Client
         if ($method == 'GET') {
             $options['query'] = $params;
         } else {
-            $options['form_paramss'] = $params;
+            $options['form_params'] = $params;
         }
 
         return $options;
