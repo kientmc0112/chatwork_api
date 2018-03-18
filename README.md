@@ -25,7 +25,7 @@ echo $response->mail;
 // mail@example.com
 ```
 
-How to call endpoint ( POST /rooms/{room_id}/messages )
+How to request endpoint ( POST /rooms/{room_id}/messages )
 
 ```php
 $client->request('POST', 'rooms/123456789/messages', ['body' => 'Hello']);

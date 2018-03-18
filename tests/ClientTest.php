@@ -4,11 +4,8 @@ namespace Kitchenu\Chatwork\Tests;
 
 use Kitchenu\Chatwork\Client;
 use Kitchenu\Chatwork\Exception\ChatworkException;
-use GuzzleHttp\Client as HttpClient;
-use GuzzleHttp\Handler\MockHandler;
-use GuzzleHttp\HandlerStack;
-use GuzzleHttp\Psr7\Response as HttpResponse;
 use Kitchenu\Chatwork\Response;
+use GuzzleHttp\Client as HttpClient;
 
 class ClientTest extends \PHPUnit_Framework_TestCase
 {
@@ -19,28 +16,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-
-        $this->client = new Client('token', ['handler' => $this->createMockHandler()]);
-    }
-
-    private function createMockHandler()
-    {
-        $headers = [
-            'Content-Type' => ['application/json; charset=utf-8'],
-            'Date'=> ['Thu, 15 Mar 2018 19:22:09 GMT'],
-            'X-RateLimit-Limit' => ['100'],
-            'X-RateLimit-Remaining' => ['99'],
-            'X-RateLimit-Reset' => ['1521142029'],
-        ];
-        $body = json_encode([
-            'test_1'=> 1,
-            'test_2'=> 2,
-            'test_3'=> 3,
-        ]);
-        $mockResponse = new HttpResponse(200, $headers, $body);
-        $mock = new MockHandler([$mockResponse]);
-
-        return HandlerStack::create($mock);
+        $this->client = new Client('token', ['handler' => make_mock_handler()]);
     }
 
     public function testRequest()

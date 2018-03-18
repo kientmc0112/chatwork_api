@@ -118,6 +118,8 @@ class Client
     }
 
     /**
+     * Request API endpoint
+     *
      * @param string $method
      * @param string $endpoint
      * @param array  $params

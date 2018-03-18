@@ -53,6 +53,8 @@ class Response
     }
 
     /**
+     * Get response result 
+     *
      * @return array
      */
     public function result()
@@ -61,6 +63,8 @@ class Response
     }
 
     /**
+     * Get endpoint infomation
+     *
      * @return array
      */
     public function info()
@@ -69,6 +73,8 @@ class Response
     }
 
     /**
+     * Get Guzzle Response 
+     *
      * @return HttpResponse
      */
     public function httpResponse()
@@ -79,6 +85,7 @@ class Response
     /**
      * @param string $key
      * @return mixed
+     * @throws InvalidArgumentException
      */
     public function get($key)
     {
@@ -91,8 +98,13 @@ class Response
         throw new InvalidArgumentException();
     }
 
+    /**
+     * @param string $key
+     * @return mixed
+     * @throws InvalidArgumentException
+     */
     public function __get($key)
     {
-        $this->get($key);
+        return $this->get($key);
     }
 }
