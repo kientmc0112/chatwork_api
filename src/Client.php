@@ -32,6 +32,7 @@ use Kitchenu\Chatwork\Exception\ChatworkException;
  * @method Response postRoomTasks(array $params = [])
  * @method Response getRoomTask(array $params = [])
  * @method Response getRoomFiles(array $params = [])
+ * @method Response postRoomFiles(array $params = [])
  * @method Response getRoomFile(array $params = [])
  * @method Response getRoomLink(array $params = [])
  * @method Response postRoomLink(array $params = [])
@@ -65,6 +66,7 @@ class Client
     const POST_ROOM_TASKS          = 'rooms/{room_id}/tasks';
     const GET_ROOM_TASK            = 'rooms/{room_id}/tasks/{task_id}';
     const GET_ROOM_FILES           = 'rooms/{room_id}/files';
+    const POST_ROOM_FILES          = 'rooms/{room_id}/files';
     const GET_ROOM_FILE            = 'rooms/{room_id}/files/{file_id}';
     const GET_ROOM_LINK            = 'rooms/{room_id}/link';
     const POST_ROOM_LINK           = 'rooms/{room_id}/link';

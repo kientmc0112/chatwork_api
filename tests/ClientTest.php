@@ -226,6 +226,15 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($info['endpoint'], 'rooms/1/files');
     }
 
+    public function testPostRoomFiles()
+    {
+        touch('test.txt');
+        $response = $this->client->postRoomFiles(['room_id' => 1, 'file' => fopen('test.txt', 'r'), 'message' => 'test']);
+        $info = $response->info();
+        $this->assertSame($info['method'], 'POST');
+        $this->assertSame($info['endpoint'], 'rooms/1/files');
+    }
+
     public function testGetRoomFile()
     {
         $response = $this->client->getRoomFile(['room_id' => 1, 'file_id' => 1]);
