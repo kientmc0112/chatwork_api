@@ -1,12 +1,12 @@
 {
-    "name": "kientmc/chatwork-api",
+    "name": "autostyle/chatwork-api",
     "type": "library",
-    "description": "ChataWork API client library",
+    "description": "ChatWork API",
     "keywords": ["chatwork"],
     "license": "MIT",
     "authors": [
         {
-            "name": "Kientmc"
+            "name": "kientmc"
         }
     ],
     "require": {
