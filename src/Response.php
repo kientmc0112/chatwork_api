@@ -1,6 +1,6 @@
 <?php
 
-namespace Kitchenu\Chatwork;
+namespace Kientmc\Chatwork;
 
 use DateTime;
 use GuzzleHttp\Psr7\Response as HttpResponse;

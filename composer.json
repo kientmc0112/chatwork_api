@@ -1,12 +1,12 @@
 {
-    "name": "kitchenu/chatwork-php",
+    "name": "kientmc/chatwork-api",
     "type": "library",
     "description": "ChataWork API client library",
     "keywords": ["chatwork"],
     "license": "MIT",
     "authors": [
         {
-            "name": "Kitchenu"
+            "name": "Kientmc"
         }
     ],
     "require": {

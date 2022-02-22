@@ -1,6 +1,6 @@
 <?php
 
-namespace Kitchenu\Chatwork\Exception;
+namespace Kientmc\Chatwork\Exception;
 
 class BadRequestExceotion extends ChatworkException
 {

@@ -1,13 +1,13 @@
 <?php
 
-namespace Kitchenu\Chatwork;
+namespace Kientmc\Chatwork;
 
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Exception\ClientException;
 use InvalidArgumentException;
-use Kitchenu\Chatwork\Exception\BadRequestExceotion;
-use Kitchenu\Chatwork\Exception\AuthorizedExceotion;
-use Kitchenu\Chatwork\Exception\ChatworkException;
+use Kientmc\Chatwork\Exception\BadRequestExceotion;
+use Kientmc\Chatwork\Exception\AuthorizedExceotion;
+use Kientmc\Chatwork\Exception\ChatworkException;
 
 /**
  * @method Response getMe()
